@@ -9,7 +9,11 @@ public class C206_CaseStudy {
 		ArrayList<Quotation> quotationList = new ArrayList<Quotation>();
 
 		Quotation a = new Quotation("hi", "hi", "hi", "hi", "hi", "hi", "hi");
+		Quotation b = new Quotation("hi1", "hi1", "hi1", "hi1", "hi1", "hi1", "hi1");
+		Quotation c = new Quotation("hi2", "hi2", "hi2", "hi2", "hi2", "hi2", "hi2");
 		quotationList.add(a);
+		quotationList.add(b);
+		quotationList.add(c);
 
 		int option = 0;
 
@@ -141,7 +145,9 @@ public class C206_CaseStudy {
 		String quotationID = Helper.readString("Enter Quotation ID: ");
 		for (int i = 0; i < quotationList.size(); i++) {
 			if (quotationID.equalsIgnoreCase(quotationList.get(i).getQuotationID())) {
+				
 				System.out.println("Error! Duplicate Quotation ID!");
+				break;
 			} else {
 				String renoCategory = Helper.readString("Enter Renovation Category: ");
 				String description = Helper.readString("Enter Description: ");
