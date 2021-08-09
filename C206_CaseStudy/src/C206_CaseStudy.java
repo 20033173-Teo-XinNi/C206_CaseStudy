@@ -8,18 +8,72 @@ public class C206_CaseStudy {
 		// TODO Auto-generated method stub
 		ArrayList<Quotation> quotationList = new ArrayList<Quotation>();
 
+		Quotation a = new Quotation("hi", "hi", "hi", "hi", "hi", "hi", "hi");
+		quotationList.add(a);
+
 		int option = 0;
 
 		while (option != OPTION_QUIT) {
 			homePageMenu();
 			option = Helper.readInt("Enter an option > ");
 			if (option == 1) {
-				customerMenu();
-				// relevant code for customer menu
+				int option2 = 0;
+				while (option2 != 4) {
+					customerMenu();
+					option2 = Helper.readInt("Enter option > ");
+					if (option2 == 1) {
+						// method for visitor account registration
+					} else if (option2 == 2) {
+						// method for request for quotation
+					} else if (option2 == 3) {
+						// method for manage appointment
+					} else {
+						System.out.println("Invalid option!");
+					}
+				}
 
 			} else if (option == 2) {
-				adminMenu();
-				// relevant code for admin/designer menu
+				int option1 = 0;
+
+				Helper.line(80, "-");
+				while (option1 != 6) {
+					adminMenu();
+					option1 = Helper.readInt("Enter option > ");
+					if (option1 == 1) {
+						// method for manage customer
+					} else if (option1 == 2) {
+						// method for manage package
+					} else if (option1 == 3) {
+						// method for manage request for quotation
+					} else if (option1 == 4) {
+						// method for manage quotation
+						int option3 = 0;
+						while (option3 != 4) {
+							manageQuotation();
+							option3 = Helper.readInt("Enter option > ");
+							if (option3 == 1) {
+								// method for view all quotations
+								viewAllQuotations(quotationList);
+							} else if (option3 == 2) {
+								// method for add a quotation
+								addQuotation(quotationList);
+							} else if (option3 == 3) {
+								// method for delete a quotation
+								deleteQuotation(quotationList);
+							} else if (option3 == 4) {
+
+							} else {
+								System.out.println("Invalid option!");
+							}
+						}
+					} else if (option1 == 5) {
+						// method for manage appointment
+					} else if (option1 == 6) {
+
+					} else {
+						System.out.println("Invalid option!");
+					}
+				}
 
 			} else if (option == OPTION_QUIT) {
 				System.out.println("Bye!");
@@ -29,8 +83,7 @@ public class C206_CaseStudy {
 		}
 	}
 
-	// ================================= UI interface for home page
-	// =================================
+	// =================================UI interface for home page=================================
 	public static void homePageMenu() {
 		C206_CaseStudy.setHeader("SELECT HOME PAGE");
 		System.out.println("1. Home Page for Customers");
@@ -40,102 +93,86 @@ public class C206_CaseStudy {
 	}
 
 	public static void customerMenu() {
-		int option = 0;
-		while (option != 4) {
-			C206_CaseStudy.setHeader("CUSTOMER HOME PAGE");
-			System.out.println("1. Visitor account Registration");
-			System.out.println("2. Request for Quotation");
-			System.out.println("3. Manage Appointment");
-			System.out.println("4. Back");
-			Helper.line(80, "-");
-			option = Helper.readInt("Enter option > ");
-			if (option == 1) {
-				// method for visitor account registration
-			} else if (option == 2) {
-				// method for request for quotation
-			} else if (option == 3) {
-				// method for manage appointment
-			} else {
-				System.out.println("Invalid option!");
-			}
-		}
-
+		C206_CaseStudy.setHeader("CUSTOMER HOME PAGE");
+		System.out.println("1. Visitor account Registration");
+		System.out.println("2. Request for Quotation");
+		System.out.println("3. Manage Appointment");
+		System.out.println("4. Back");
+		Helper.line(80, "-");
 	}
 
 	public static void adminMenu() {
-		int option = 0;
-		while (option != 6) {
-			C206_CaseStudy.setHeader("ADMIN/DESIGNER HOME PAGE");
-			System.out.println("1. Manage Customer");
-			System.out.println("2. Manage Package");
-			System.out.println("3. Manage Request for Quotation");
-			System.out.println("4. Manage Quotation");
-			System.out.println("5. Manage Appointment");
-			System.out.println("6. Back");
-			Helper.line(80, "-");
-			option = Helper.readInt("Enter option > ");
-			if (option == 1) {
-				// method for manage customer
-			} else if (option == 2) {
-				// method for manage package
-			} else if (option == 3) {
-				// method for manage request for quotation
-			} else if (option == 4) {
-				// method for manage quotation
-				manageQuotation();
-			} else if (option == 5) {
-				// method for manage appointment
-			} else if (option == 6) {
-
-			} else {
-				System.out.println("Invalid option!");
-			}
-		}
-
+		C206_CaseStudy.setHeader("ADMIN/DESIGNER HOME PAGE");
+		System.out.println("1. Manage Customer");
+		System.out.println("2. Manage Package");
+		System.out.println("3. Manage Request for Quotation");
+		System.out.println("4. Manage Quotation");
+		System.out.println("5. Manage Appointment");
+		System.out.println("6. Back");
+		Helper.line(80, "-");
 	}
 
 	public static void manageQuotation() {
-		int option = 0;
-		while (option != 4) {
-			C206_CaseStudy.setHeader("MANAGE QUOTATION");
-			System.out.println("1. View All Quotations");
-			System.out.println("2. Add a Quotation");
-			System.out.println("3. Delete a Quotation");
-			System.out.println("4. Back");
-			Helper.line(80, "-");
-			option = Helper.readInt("Enter option > ");
-			if (option == 1) {
-				// method for view all quotations
-				viewAllQuotations();
-			} else if (option == 2) {
-				// method for add a quotation
-				addQuotation();
-			} else if (option == 3) {
-				// method for delete a quotation
-				deleteQuotation();
-			} else if (option == 4) {
-
-			} else {
-				System.out.println("Invalid option!");
-			}
-		}
+		C206_CaseStudy.setHeader("MANAGE QUOTATION");
+		System.out.println("1. View All Quotations");
+		System.out.println("2. Add a Quotation");
+		System.out.println("3. Delete a Quotation");
+		System.out.println("4. Back");
+		Helper.line(80, "-");
 	}
 
-	// ================================= Manage Quotation Methods
-	// =================================
-	public static void viewAllQuotations() {
+	// =================================Manage Quotation Methods=================================
+	public static void viewAllQuotations(ArrayList<Quotation> quotationList) {
 		Helper.line(80, "-");
-		String output = String.format("%-5s %-5s %-15s %-30s %-15s %-15s %-10s", "REQUEST_ID", "QUOTATION_ID",
+		String output = String.format("%-15s %-15s %-25s %-30s %-15s %-25s %-15s\n", "REQUEST_ID", "QUOTATION_ID",
 				"RENOVATION Category", "DESCRIPTION", "DESIGNER NAME", "EARLIST START DATE", "TOTAL QUOTATION AMOUNT");
+
+		for (int i = 0; i < quotationList.size(); i++) {
+			output += String.format("%-15s %-15s %-25s %-30s %-15s %-25s %-15s\n", quotationList.get(i).getRequestID(),
+					quotationList.get(i).getQuotationID(), quotationList.get(i).getRenoCategory(),
+					quotationList.get(i).getDescription(), quotationList.get(i).getDesignerName(),
+					quotationList.get(i).getDate(), quotationList.get(i).getAmount());
+		}
 		System.out.println(output);
 	}
 
-	public static void addQuotation() {
+	public static void addQuotation(ArrayList<Quotation> quotationList) {
+		String requestID = Helper.readString("Enter Request ID: ");
+		String quotationID = Helper.readString("Enter Quotation ID: ");
+		for (int i = 0; i < quotationList.size(); i++) {
+			if (quotationID.equalsIgnoreCase(quotationList.get(i).getQuotationID())) {
+				System.out.println("Error! Duplicate Quotation ID!");
+			} else {
+				String renoCategory = Helper.readString("Enter Renovation Category: ");
+				String description = Helper.readString("Enter Description: ");
+				String name = Helper.readString("Enter Designer name: ");
+				String date = Helper.readString("Enter Earliest Start Date: ");
+				String amount = Helper.readString("Enter Total Quotation Amount: ");
+				Quotation q = new Quotation(requestID, quotationID, renoCategory, description, name, date, amount);
+				quotationList.add(q);
+				System.out.println("Quotation added sucessfully!");
+			}
+
+		}
 
 	}
 
-	public static void deleteQuotation() {
-
+	public static void deleteQuotation(ArrayList<Quotation> quotationList) {
+		String quotationID = Helper.readString("Enter Quotation ID: ");
+		for (int i = 0; i < quotationList.size(); i++) {
+			if (quotationID.equalsIgnoreCase(quotationList.get(i).getQuotationID())) {
+				quotationList.remove(i).getRequestID();
+				quotationList.remove(i).getQuotationID();
+				quotationList.remove(i).getRenoCategory();
+				quotationList.remove(i).getDescription();
+				quotationList.remove(i).getDesignerName();
+				quotationList.remove(i).getDate();
+				quotationList.remove(i).getAmount();
+				System.out.println("Quotation with ID: " + quotationID + " deleted successfully!");
+			} else {
+				System.out.println("Invalid Quotation ID!");
+			}
+		}
 	}
 
 	public static void setHeader(String header) {
