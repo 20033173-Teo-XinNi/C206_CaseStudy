@@ -7,13 +7,9 @@ public class C206_CaseStudy {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ArrayList<Quotation> quotationList = new ArrayList<Quotation>();
-
-		Quotation a = new Quotation("hi", "hi", "hi", "hi", "hi", "hi", "hi");
-		Quotation b = new Quotation("hi1", "hi1", "hi1", "hi1", "hi1", "hi1", "hi1");
-		Quotation c = new Quotation("hi2", "hi2", "hi2", "hi2", "hi2", "hi2", "hi2");
-		quotationList.add(a);
-		quotationList.add(b);
-		quotationList.add(c);
+		quotationList.add(new Quotation("1", "1", "Kitchen", "Includes cabinet", "Bryan", "1/11/2021", "10"));
+		quotationList.add(new Quotation("2", "1", "Living Room", "Includes flooring", "John", "1/12/2021", "5"));
+		quotationList.add(new Quotation("3", "1", "Bedroom", "Includes bedframe", "Bob","1/10/2021", "7"));
 
 		int option = 0;
 
@@ -157,6 +153,7 @@ public class C206_CaseStudy {
 				Quotation q = new Quotation(requestID, quotationID, renoCategory, description, name, date, amount);
 				quotationList.add(q);
 				System.out.println("Quotation added sucessfully!");
+				break;
 			}
 
 		}
@@ -168,17 +165,17 @@ public class C206_CaseStudy {
 		for (int i = 0; i < quotationList.size(); i++) {
 			if (quotationID.equalsIgnoreCase(quotationList.get(i).getQuotationID())) {
 				quotationList.remove(i).getRequestID();
-				quotationList.remove(i).getQuotationID();
-				quotationList.remove(i).getRenoCategory();
-				quotationList.remove(i).getDescription();
-				quotationList.remove(i).getDesignerName();
-				quotationList.remove(i).getDate();
-				quotationList.remove(i).getAmount();
+			
 				System.out.println("Quotation with ID: " + quotationID + " deleted successfully!");
+				break;
 			} else {
 				System.out.println("Invalid Quotation ID!");
 			}
 		}
+		
+
+		
+		
 	}
 
 	public static void setHeader(String header) {
