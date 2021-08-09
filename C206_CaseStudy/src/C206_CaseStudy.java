@@ -29,6 +29,8 @@ public class C206_CaseStudy {
 		}
 	}
 
+	// ================================= UI interface for home page
+	// =================================
 	public static void homePageMenu() {
 		C206_CaseStudy.setHeader("SELECT HOME PAGE");
 		System.out.println("1. Home Page for Customers");
@@ -79,14 +81,13 @@ public class C206_CaseStudy {
 			} else if (option == 3) {
 				// method for manage request for quotation
 			} else if (option == 4) {
-				manageQuotation();
 				// method for manage quotation
+				manageQuotation();
 			} else if (option == 5) {
 				// method for manage appointment
 			} else if (option == 6) {
-				
-			}
-			else {
+
+			} else {
 				System.out.println("Invalid option!");
 			}
 		}
@@ -113,16 +114,20 @@ public class C206_CaseStudy {
 				// method for delete a quotation
 				deleteQuotation();
 			} else if (option == 4) {
-				
-			}
-			else {
+
+			} else {
 				System.out.println("Invalid option!");
 			}
 		}
 	}
 
+	// ================================= Manage Quotation Methods
+	// =================================
 	public static void viewAllQuotations() {
-       
+		Helper.line(80, "-");
+		String output = String.format("%-5s %-5s %-15s %-30s %-15s %-15s %-10s", "REQUEST_ID", "QUOTATION_ID",
+				"RENOVATION Category", "DESCRIPTION", "DESIGNER NAME", "EARLIST START DATE", "TOTAL QUOTATION AMOUNT");
+		System.out.println(output);
 	}
 
 	public static void addQuotation() {
