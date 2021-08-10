@@ -8,6 +8,7 @@ public class C206_CaseStudy {
 		// TODO Auto-generated method stub
 		ArrayList<Quotation> quotationList = new ArrayList<Quotation>();
 		ArrayList<Customer> customerList = new ArrayList<Customer>();
+		ArrayList<QuotationRequest> QuotationRequestList = new ArrayList<QuotationRequest>();
 		
 		quotationList.add(new Quotation("1", "1", "Kitchen", "Includes cabinet", "Bryan", "1/11/2021", "10"));
 		quotationList.add(new Quotation("2", "1", "Living Room", "Includes flooring", "John", "1/12/2021", "5"));
@@ -15,6 +16,12 @@ public class C206_CaseStudy {
 		
 		customerList.add(new Customer("Mary Tan", "Customer", "Marytan@abc123.com", "NIL", "New"));
 		customerList.add(new Customer("John Lim", "Customer", "Johnlim@def456.com", "NIL", "New"));
+		
+		QuotationRequestList.add(new QuotationRequest("1", "98766789", "XN123@yeahoomail.com", "HDB", "Kitchen",
+				0, 0, "70 sq m", "Modern", "11-12-2021", 10000, 'N'));
+		QuotationRequestList.add(new QuotationRequest("2", "98766789", "XN123@yeahoomail.com", "HDB", "Toilet", 
+				0, 2, "70 sq m", "Modern", "11-12-2021", 8000, 'N'));
+		
 		
 		int option = 0;
 
@@ -35,6 +42,23 @@ public class C206_CaseStudy {
 						}
 					} else if (option2 == 2) {
 						// method for request for quotation
+						manageQuotationRequest();
+						option2 = Helper.readInt("Enter option > ");
+						if (option2 == 1) {
+							// method for view all quotation request
+							
+						} else if (option2 == 2) {
+							// method for add a quotation request
+							QuotationRequest qr = inputQuotationRequest();
+							addQuotationRequest(QuotationRequestList, qr);
+						} else if (option2 == 3) {
+							// method for delete a quotation request
+							
+						} else if (option2 == 4) {
+							
+						} else {
+							System.out.println("Invalid option");
+						}
 					} else if (option2 == 3) {
 						// method for manage appointment
 					} else {
@@ -159,6 +183,62 @@ public class C206_CaseStudy {
 		System.out.println("3. Delete a Quotation");
 		System.out.println("4. Back");
 		Helper.line(80, "-");
+	}
+	
+	public static void manageQuotationRequest() {
+		C206_CaseStudy.setHeader("MANAGE QUOTATION REQUEST");
+		System.out.println("1. View All Quotation Requests");
+		System.out.println("2. Add a Quotation Requests");
+		System.out.println("3. Delete a Quotation Requests");
+		System.out.println("4. Back");
+		Helper.line(80, "-");
+	}
+	
+	// =================================Manage Quotation Request Methods=========================
+	public static QuotationRequest inputQuotationRequest() {
+		String requestName = Helper.readString("Enter Request Name > ");
+		String contactNumber = Helper.readString("Enter Contact Number > ");
+		String email = Helper.readString("Enter Email > ");
+		String propertyType = Helper.readString("Enter Property Type > ");
+		String renovationType = Helper.readString("Enter Renovation Type > ");
+		int rooms = Helper.readInt("Number of Rooms to Renovate > ");
+		int toilets = Helper.readInt("Number of toilets to Renovate > ");
+		String areaSize = Helper.readString("Enter Area Size > ");
+		String renovationStyle = Helper.readString("Enter Renovation Style > ");
+		String targetCompletionDate = Helper.readString("Enter Target Completion Date > ");
+		int budget = Helper.readInt("Enter Budget > ");
+		char requestUrgency = Helper.readChar("Enter Request Urgency (Y/N) > ");
+		
+		QuotationRequest qr = new QuotationRequest(requestName, contactNumber, email, propertyType, renovationType
+				,rooms, toilets, areaSize, renovationStyle, targetCompletionDate, budget, requestUrgency);
+		
+		return qr;
+	}
+	public static void addQuotationRequest(ArrayList<QuotationRequest> QuotationRequestList, QuotationRequest qr1) {
+		
+		
+		int size = QuotationRequestList.size();
+		boolean duplicate = false;
+		String requestName = qr1.getRequestName();
+		for (int i = 0; i < size; i++) {
+			String requestNameDuplicate = QuotationRequestList.get(i).getRequestName();
+			
+			if(requestNameDuplicate.equalsIgnoreCase(requestName)) {
+				duplicate = true;
+				break;
+			}else {
+				duplicate = false;
+			}
+		}
+		
+		if(duplicate == true) {
+			System.out.println("Error! Duplicate Quotaion Requests!");
+		} else {
+			QuotationRequestList.add(qr1);
+			System.out.println("Quotation Request added");
+		}
+		
+		
 	}
 	
 	// =================================Manage Customer Methods==================================
