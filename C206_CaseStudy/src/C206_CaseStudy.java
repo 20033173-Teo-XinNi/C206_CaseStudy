@@ -27,7 +27,12 @@ public class C206_CaseStudy {
 					customerMenu();
 					option2 = Helper.readInt("Enter option > ");
 					if (option2 == 1) {
-						// method for visitor account registration
+						manageRegistration();
+						option2 = Helper.readInt("Enter option > ");
+						if (option2 == 1) {
+							// method for visitor account registration
+							addCustomers(customerList);
+						}
 					} else if (option2 == 2) {
 						// method for request for quotation
 					} else if (option2 == 3) {
@@ -139,6 +144,12 @@ public class C206_CaseStudy {
 		System.out.println("2. Add a New User");
 		System.out.println("3. Delete a User");
 		System.out.println("4. Back");
+	}
+	
+	public static void manageRegistration() {
+		C206_CaseStudy.setHeader("NEW CUSTOMER REGISTRATION");
+		System.out.println("1. Register as New User");
+		System.out.println("2. Back");
 	}
 
 	public static void manageQuotation() {
