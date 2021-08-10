@@ -10,7 +10,11 @@ public class C206_CaseStudyTest {
 	private Customer c1;
 	private Customer c2;
 	
+	private Quotation q1;
+	private Quotation q2;
+	
 	private ArrayList<Customer> customerList;
+	private ArrayList<Quotation> quotationList;
 	
 	public C206_CaseStudyTest() {
 		super();
@@ -23,6 +27,11 @@ public class C206_CaseStudyTest {
 		c2= new Customer("John Lim", "Customer", "Johnlim@def456.com", "NIL", "New");
 		
 		customerList = new ArrayList<Customer>();
+		
+		q1 = new Quotation("1", "1", "Kitchen", "Includes cabinet", "Bryan", "1/11/2021", "10");
+		q2 = new Quotation("2", "2", "Living Room", "Includes flooring", "John", "1/12/2021", "5");
+		
+		quotationList = new ArrayList<Quotation>();
 	}
 
 	
@@ -37,6 +46,50 @@ public class C206_CaseStudyTest {
 		c1 = null;
 		c2 = null;
 		customerList = null;
+		
+		q1 = null;
+		q2 = null;
+		quotationList = null;
+	}
+	
+	public void RetrieveAllQuotationTest() {
+		//fail("Not yet implemented");
+		// Test if quotation list is not null but empty - boundary
+		assertNotNull("Test if there is valid Quotation arraylist to retrieve item from", quotationList);
+		
+		//test if the list of quotation retrieved from C206_CaseStudy is empty - boundary
+		String allQuotation= C206_CaseStudy.retrieveAllQuotations(quotationList);
+		String testOutput = "";
+		assertEquals("Test that the retrieved Chromebooklist is empty?", testOutput, allQuotation);
+		
+		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
+		C206_CaseStudy.addQuotation(quotationList, q1);
+		C206_CaseStudy.addQuotation(quotationList, q2);
+		assertEquals("Test that quotationList is 2 after adding 2 item", 2, quotationList.size());
+		
+		
+		//test if the expected output string same as the list of quotations retrieved from C206_CaseStudy
+		allQuotation= C206_CaseStudy.retrieveAllQuotations(quotationList);
+		testOutput = String.format("%-15s %-15s %-25s %-30s %-15s %-25s %-15s\n","1", "1", "Kitchen", "Includes cabinet", "Bryan", "1/11/2021", "10");
+		testOutput += String.format("%-15s %-15s %-25s %-30s %-15s %-25s %-15s\n","2", "2", "Living Room", "Includes flooring", "John", "1/12/2021", "5");	
+		assertEquals("Test that ViewAllChromebooklist", testOutput, allQuotation);
+	}
+	
+	
+	public void addQuotation() {
+		// Item list is not null, so that can add a new item - boundary
+		assertNotNull("Check if there is valid Quotation arraylist to add to", quotationList);
+		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
+		//The item just added is as same as the first item of the list
+		C206_CaseStudy.addQuotation(quotationList, q1);
+		assertEquals("Check that Quotation arraylist size is 1", 1, quotationList.size());
+		assertSame("Check that Quotation is added", q1, quotationList.get(0));
+		
+		//Add another item. test The size of the list is 2? -normal
+		//The item just added is as same as the second item of the list
+		C206_CaseStudy.addQuotation(quotationList, q2);
+		assertEquals("Check that Quotation arraylist size is 2", 2, quotationList.size());
+		assertSame("Check that Quotation is added", q2, quotationList.get(1));
 	}
 
 }
