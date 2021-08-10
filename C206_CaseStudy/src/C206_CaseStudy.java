@@ -31,7 +31,7 @@ public class C206_CaseStudy {
 						option2 = Helper.readInt("Enter option > ");
 						if (option2 == 1) {
 							// method for visitor account registration
-							addCustomers(customerList);
+							addCustomer(customerList);
 						}
 					} else if (option2 == 2) {
 						// method for request for quotation
@@ -55,13 +55,13 @@ public class C206_CaseStudy {
 						option1 = Helper.readInt("Enter option > ");
 						if (option1 == 1) {
 							// method for view all customers
-							viewAllCustomers(customerList);
+							viewAllCustomer(customerList);
 						} else if (option1 == 2) {
 							// method for add a customer
-							addCustomers(customerList);
+							addCustomer(customerList);
 						} else if (option1 == 3) {
 							// method for delete a customer
-							deleteCustomers(customerList);
+							deleteCustomer(customerList);
 						} else if (option1 == 4) {
 							
 						} else {
@@ -162,7 +162,7 @@ public class C206_CaseStudy {
 	}
 	
 	// =================================Manage Customer Methods==================================
-	public static void viewAllCustomers(ArrayList<Customer> customerList) {
+	public static void viewAllCustomer(ArrayList<Customer> customerList) {
 		Helper.line(80, "-");
 		String output = String.format("%-25s %-15s %-35s %-15s\n", "NAME", "ROLE", "EMAIL", "STATUS");
 		
@@ -174,7 +174,7 @@ public class C206_CaseStudy {
 		System.out.println(output);
 	}
 	
-	public static void addCustomers(ArrayList<Customer> customerList) {
+	public static void addCustomer(ArrayList<Customer> customerList) {
 		String name = Helper.readString("Enter full name: ");
 		for (int i = 0; i < customerList.size(); i++) {
 			if (name.equalsIgnoreCase(customerList.get(i).getName())) {
@@ -193,7 +193,7 @@ public class C206_CaseStudy {
 		}
 	}
 	
-	public static void deleteCustomers(ArrayList<Customer> customerList) {
+	public static void deleteCustomer(ArrayList<Customer> customerList) {
 		String name = Helper.readString("Enter name: ");
 		for (int i = 0; i < customerList.size(); i++) {
 			if (name.equalsIgnoreCase(customerList.get(i).getName())) {
@@ -268,5 +268,7 @@ public class C206_CaseStudy {
 		System.out.println(header);
 		Helper.line(80, "-");
 	}
+
+	
 
 }
