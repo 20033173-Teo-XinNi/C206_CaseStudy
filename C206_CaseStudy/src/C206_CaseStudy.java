@@ -7,10 +7,15 @@ public class C206_CaseStudy {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ArrayList<Quotation> quotationList = new ArrayList<Quotation>();
+		ArrayList<Customer> customerList = new ArrayList<Customer>();
+		
 		quotationList.add(new Quotation("1", "1", "Kitchen", "Includes cabinet", "Bryan", "1/11/2021", "10"));
 		quotationList.add(new Quotation("2", "1", "Living Room", "Includes flooring", "John", "1/12/2021", "5"));
 		quotationList.add(new Quotation("3", "1", "Bedroom", "Includes bedframe", "Bob","1/10/2021", "7"));
-
+		
+		customerList.add(new Customer("Mary Tan", "Customer", "Marytan@abc123.com", "NIL", "New"));
+		customerList.add(new Customer("John Lim", "Customer", "Johnlim@def456.com", "NIL", "New"));
+		
 		int option = 0;
 
 		while (option != OPTION_QUIT) {
@@ -41,6 +46,22 @@ public class C206_CaseStudy {
 					option1 = Helper.readInt("Enter option > ");
 					if (option1 == 1) {
 						// method for manage customer
+						manageCustomer();
+						option1 = Helper.readInt("Enter option > ");
+						if (option1 == 1) {
+							// method for view all customers
+							viewAllCustomers(customerList);
+						} else if (option1 == 2) {
+							// method for add a customer
+							addCustomers(customerList);
+						} else if (option1 == 3) {
+							// method for delete a customer
+							deleteCustomers(customerList);
+						} else if (option1 == 4) {
+							
+						} else {
+							System.out.println("Invalid option");
+						}
 					} else if (option1 == 2) {
 						// method for manage package
 					} else if (option1 == 3) {
@@ -111,6 +132,14 @@ public class C206_CaseStudy {
 		System.out.println("6. Back");
 		Helper.line(80, "-");
 	}
+	
+	public static void manageCustomer() {
+		C206_CaseStudy.setHeader("MANAGE CUSTOMER");
+		System.out.println("1. View All Users");
+		System.out.println("2. Add a New User");
+		System.out.println("3. Delete a User");
+		System.out.println("4. Back");
+	}
 
 	public static void manageQuotation() {
 		C206_CaseStudy.setHeader("MANAGE QUOTATION");
@@ -120,7 +149,52 @@ public class C206_CaseStudy {
 		System.out.println("4. Back");
 		Helper.line(80, "-");
 	}
-
+	
+	// =================================Manage Customer Methods==================================
+	public static void viewAllCustomers(ArrayList<Customer> customerList) {
+		Helper.line(80, "-");
+		String output = String.format("%-25s %-15s %-35s %-15s\n", "NAME", "ROLE", "EMAIL", "STATUS");
+		
+		for (int i = 0; i < customerList.size(); i++) {
+			output += String.format("%-25s %-15s %-35s %-15s\n", customerList.get(i).getName(), 
+					customerList.get(i).getRole(), customerList.get(i).getEmail(), 
+					customerList.get(i).getStatus());
+		}
+		System.out.println(output);
+	}
+	
+	public static void addCustomers(ArrayList<Customer> customerList) {
+		String name = Helper.readString("Enter full name: ");
+		for (int i = 0; i < customerList.size(); i++) {
+			if (name.equalsIgnoreCase(customerList.get(i).getName())) {
+				System.out.println("Error! Duplicated name entry!");
+				break;
+			} else {
+				String role = Helper.readString("Enter role: ");
+				String email = Helper.readString("Enter email: ");
+				String password = Helper.readString("Enter password: ");
+				String status = Helper.readString("Enter status: ");
+				Customer c = new Customer(name, role, email, password, status);
+				customerList.add(c);
+				System.out.println("Customer added Successfully!");
+				break;
+			}
+		}
+	}
+	
+	public static void deleteCustomers(ArrayList<Customer> customerList) {
+		String name = Helper.readString("Enter name: ");
+		for (int i = 0; i < customerList.size(); i++) {
+			if (name.equalsIgnoreCase(customerList.get(i).getName())) {
+				customerList.remove(i).getName();
+				
+				System.out.println("User " + name + " deleted Successfully!");
+				break;
+			} else {
+				System.out.println("Invalid Name entered!");
+			}
+		}
+	}
 	// =================================Manage Quotation Methods=================================
 	public static void viewAllQuotations(ArrayList<Quotation> quotationList) {
 		Helper.line(80, "-");

@@ -1,5 +1,5 @@
 
-public class User {
+public class Customer {
 	
 	private String name;
 	private String role;
@@ -7,7 +7,7 @@ public class User {
 	private String password;
 	private String status;
 	
-	public User(String name, String role, String email, String password, String status) {
+	public Customer(String name, String role, String email, String password, String status) {
 		super();
 		this.name = name;
 		this.role = role;
