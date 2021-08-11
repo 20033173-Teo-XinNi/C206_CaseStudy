@@ -58,6 +58,8 @@ public class C206_CaseStudyTest {
 	@Test
 	public void doAddQuotationRequest() {
 		
+		//Test that the array list is not null so that new request can be added to it.
+		assertNotNull("Check that there is a valid arrayList to add to: ", QuotationRequestList);
 		
 		C206_CaseStudy.addQuotationRequest(QuotationRequestList, qr1);
 		//Test that after adding a request, the size of the array list is 1.
@@ -69,14 +71,45 @@ public class C206_CaseStudyTest {
 		//Test that adding a second request, the size of the array list is 2.
 		assertEquals("Check that the QuotationRequestList size is 2: ", 2, QuotationRequestList.size());
 		//Test that after adding a request, the item added is same as the item added in the array list.
-		assertSame("Check that the QuotationRequest qr1 is added: ", qr2, QuotationRequestList.get(1));
-		
-		//Test that the array list is not null so that new request can be added to it.
-		assertNotNull("Check that there is a valid arrayList to add to: ", QuotationRequestList);
+		assertSame("Check that the QuotationRequest qr2 is added: ", qr2, QuotationRequestList.get(1));
 		
 	}
 	
 	@Test
+	public void doViewQuotationRequest() {
+		
+		//Test that the array list is not null but empty.
+		assertNotNull("Check that there is a valid arrayList to retrieve from: ", QuotationRequestList);
+		
+		//Test if the list of quotation request retrieved is empty - boundary
+		String allQuotation= C206_CaseStudy.retrieveAllQuotationRequest(QuotationRequestList);
+		String testOutput = "";
+		assertEquals("Test that the retrieved quotationlist is empty?", testOutput, allQuotation);
+		
+		//Test that after request have been added, the size of the output list is 2.
+		C206_CaseStudy.addQuotationRequest(QuotationRequestList, qr1);
+		C206_CaseStudy.addQuotationRequest(QuotationRequestList, qr2);
+		assertEquals("Check that the QuotationRequestList size is 2: ", 2, QuotationRequestList.size());
+		
+		//Test that after requests have been added, the expected output string matches the list of requests added.
+		String allQuotationRequest= C206_CaseStudy.retrieveAllQuotationRequest(QuotationRequestList);
+		testOutput += String.format("%-30s %-30s %-30s %-30s %-30s %-30d %-30d %-30s %-30s %-30s %-30d %c\n", "1", "98766789", "XN123@yeahoomail.com", 
+				"HDB", "Kitchen", 0, 0, "70 sq m", "Modern", "11-12-2021", 10000, 'N');
+		testOutput += String.format("%-30s %-30s %-30s %-30s %-30s %-30d %-30d %-30s %-30s %-30s %-30d %c\n", "2", "98766789", "XN123@yeahoomail.com", "HDB", "Toilet", 
+				0, 2, "70 sq m", "Modern", "11-12-2021", 8000, 'N');
+		assertEquals(testOutput, allQuotationRequest);
+			
+	}
+	
+	@Test
+	public void doDeleteQuotationRequest() {
+		//Test that the array list is not null but empty.
+		assertNotNull("Check that there is a valid arrayList to delete the Quotation Request: ", QuotationRequestList);
+		
+		//Test that 
+		
+		
+	}
 	
 	
 	
@@ -89,6 +122,10 @@ public class C206_CaseStudyTest {
 		q1 = null;
 		q2 = null;
 		quotationList = null;
+		
+		qr1 = null;
+		qr2 = null;
+		QuotationRequestList = null;
 	}
 	
 	public void RetrieveAllQuotationTest() {

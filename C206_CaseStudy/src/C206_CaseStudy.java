@@ -45,15 +45,13 @@ public class C206_CaseStudy {
 						option2 = Helper.readInt("Enter option > ");
 						if (option2 == 1) {
 							// method for view all quotation request
-							
+							viewAllQuotationRequest(QuotationRequestList);
 						} else if (option2 == 2) {
 							// method for add a quotation request
 							QuotationRequest qr = inputQuotationRequest();
 							addQuotationRequest(QuotationRequestList, qr);
 						} else if (option2 == 3) {
 							// method for delete a quotation request
-							
-						} else if (option2 == 4) {
 							
 						} else {
 							System.out.println("Invalid option");
@@ -241,6 +239,34 @@ public class C206_CaseStudy {
 		
 	}
 	
+	public static String viewAllQuotationRequest(ArrayList<QuotationRequest> QuotationRequestList) {
+		
+		Helper.line(80, "-");
+		String output = String.format("%-30s %-30s %-30s %-30s %-30s %-30s %-30s %-30s %-30s %-30s %-30s %s\n", "REQUEST NAME", 
+				"CONTACT NUMBER", "EMAIL", "PROPERTY TYPE", "RENOVATION TYPE", "ROOMS TO RENOVATE", "TOILETS TO RENOVATE", 
+				"AREA SIZE", "RENOVATION STYLE", "TARGET COMPLETION DATE", "BUDGET", "REQUEST URGENCY");
+		
+		output += retrieveAllQuotationRequest(QuotationRequestList);
+		System.out.println(output);
+		return output;
+	}
+	
+	public static String retrieveAllQuotationRequest(ArrayList<QuotationRequest> QuotationRequestList) {
+		
+		String output = "";
+		
+		for(int i = 0; i < QuotationRequestList.size(); i++) {
+			QuotationRequest e = QuotationRequestList.get(i);
+			output += String.format("%-30s %-30s %-30s %-30s %-30s %-30d %-30d %-30s %-30s %-30s %-30d %c\n", e.getRequestName(), 
+					e.getContactNumber(), e.getEmail(), e.getPropertyType(), e.getRenovationType(), e.getRooms(), 
+					e.getToilets(), e.getAreaSize(), e.getRenovationStyle(), e.getTargetCompletionDate(), e.getBudget(), e.getRequestUrgency());
+		}
+		
+		
+		return output;
+		
+	}
+	
 	// =================================Manage Customer Methods==================================
 	public static void viewAllCustomer(ArrayList<Customer> customerList) {
 		Helper.line(80, "-");
@@ -252,6 +278,8 @@ public class C206_CaseStudy {
 					customerList.get(i).getStatus());
 		}
 		System.out.println(output);
+		
+	
 	}
 	
 	public static void addCustomer(ArrayList<Customer> customerList) {
@@ -363,6 +391,10 @@ public class C206_CaseStudy {
 		System.out.println(header);
 		Helper.line(80, "-");
 	}
+
+
+
+	
 
 	
 
