@@ -90,7 +90,7 @@ public class C206_CaseStudyTest {
 		q2 = null;
 		quotationList = null;
 	}
-	
+	@Test
 	public void RetrieveAllQuotationTest() {
 		//fail("Not yet implemented");
 		// Test if quotation list is not null but empty - boundary
@@ -114,7 +114,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Test that ViewAllChromebooklist", testOutput, allQuotation);
 	}
 	
-	
+	@Test
 	public void addQuotation() {
 		// Item list is not null, so that can add a new item - boundary
 		assertNotNull("Check if there is valid Quotation arraylist to add to", quotationList);
