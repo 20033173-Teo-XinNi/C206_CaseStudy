@@ -129,7 +129,6 @@ public class C206_CaseStudyTest {
 	
 
 	@Test
-
 	public void doViewQuotationRequest() {
 		
 		//Test that the array list is not null but empty.
@@ -157,36 +156,35 @@ public class C206_CaseStudyTest {
 	
 	@Test
 	public void doDeleteQuotationRequest() {
+		
 		//Test that the array list is not null but empty.
-		assertNotNull("Check that there is a valid arrayList to delete the Quotation Request: ", QuotationRequestList);
+		assertNotNull("Check that there is a valid arrayList to delete from: ", QuotationRequestList);
 		
-		//Test that 
+		//Given after adding two items
+		C206_CaseStudy.addQuotationRequest(QuotationRequestList, qr1);
+		C206_CaseStudy.addQuotationRequest(QuotationRequestList, qr2);
+		//Test that when a request deleted, the size of the Quotation Request List is 0.
+		C206_CaseStudy.deleteQuotationRequest(QuotationRequestList, qr1.getRequestName());
+		assertEquals("Check that the QuotationRequestList size is 1: ", 1, QuotationRequestList.size());
 		
+		//Test that the Quotation Request List is empty but not null after removing all the requests
+		C206_CaseStudy.deleteQuotationRequest(QuotationRequestList, qr2.getRequestName());
+		assertTrue("Check that QuotationRequestList is empty after deleting all requests: ", QuotationRequestList.isEmpty());
+		assertEquals("Check that the QuotationRequestList size is 0: ", 0, QuotationRequestList.size());
+		
+		//Test that when the request name entered is found in array list.
+		C206_CaseStudy.addQuotationRequest(QuotationRequestList, qr1);
+		boolean isDeleted = C206_CaseStudy.deleteQuotationRequest(QuotationRequestList, "1") ;
+		assertTrue("Check that when request name is deleted - true ", isDeleted);	
+		
+		//Test when the request name entered is not found in Quotation Request List.
+		C206_CaseStudy.addQuotationRequest(QuotationRequestList, qr1);
+		isDeleted = C206_CaseStudy.deleteQuotationRequest(QuotationRequestList, "7") ;
+		assertFalse("Check that when request name is deleted - false ", isDeleted);
 		
 	}
 	
 	
-<<<<<<< HEAD
-	
-	@After
-	public void tearDown() throws Exception {
-		c1 = null;
-		c2 = null;
-		customerList = null;
-		
-		q1 = null;
-		q2 = null;
-		quotationList = null;
-		
-		qr1 = null;
-		qr2 = null;
-		QuotationRequestList = null;
-	}
-	
-=======
-
-
->>>>>>> branch 'master' of https://github.com/20033173-Teo-XinNi/C206_CaseStudy.git
 	public void RetrieveAllQuotationTest() {
 		//fail("Not yet implemented");
 		// Test if quotation list is not null but empty - boundary
@@ -249,9 +247,6 @@ public class C206_CaseStudyTest {
 	
 
 
-<<<<<<< HEAD
-=======
-	@After
 	public void tearDown() throws Exception {
 		c1 = null;
 		c2 = null;
@@ -265,6 +260,6 @@ public class C206_CaseStudyTest {
 		qr2 = null;
 		QuotationRequestList = null;
 	}
->>>>>>> branch 'master' of https://github.com/20033173-Teo-XinNi/C206_CaseStudy.git
+
 	
 }
