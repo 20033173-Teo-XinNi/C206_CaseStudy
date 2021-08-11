@@ -37,7 +37,8 @@ public class C206_CaseStudy {
 						option2 = Helper.readInt("Enter option > ");
 						if (option2 == 1) {
 							// method for visitor account registration
-							addCustomer(customerList);
+							Customer c = inputCustomer();
+							C206_CaseStudy.addCustomer(customerList, c);
 						}
 					} else if (option2 == 2) {
 						// method for request for quotation
@@ -78,13 +79,15 @@ public class C206_CaseStudy {
 						option1 = Helper.readInt("Enter option > ");
 						if (option1 == 1) {
 							// method for view all customers
-							viewAllCustomer(customerList);
+							C206_CaseStudy.viewAllCustomer(customerList);
 						} else if (option1 == 2) {
 							// method for add a customer
-							addCustomer(customerList);
+							Customer c = inputCustomer();
+							C206_CaseStudy.addCustomer(customerList, c);
 						} else if (option1 == 3) {
 							// method for delete a customer
-							deleteCustomer(customerList);
+//							Customer c = inputCustomer();
+							C206_CaseStudy.deleteCustomer(customerList);
 						} else if (option1 == 4) {
 							
 						} else {
@@ -242,36 +245,55 @@ public class C206_CaseStudy {
 	}
 	
 	// =================================Manage Customer Methods==================================
-	public static void viewAllCustomer(ArrayList<Customer> customerList) {
-		Helper.line(80, "-");
-		String output = String.format("%-25s %-15s %-35s %-15s\n", "NAME", "ROLE", "EMAIL", "STATUS");
-		
-		for (int i = 0; i < customerList.size(); i++) {
-			output += String.format("%-25s %-15s %-35s %-15s\n", customerList.get(i).getName(), 
-					customerList.get(i).getRole(), customerList.get(i).getEmail(), 
-					customerList.get(i).getStatus());
+	public static String retrieveAllCustomer(ArrayList<Customer> customerList) {
+		String output = "";
+
+		int size = customerList.size();
+		for (int i = 0; i < size; i++) {
+
+			output += String.format("%-25s %-15s %-35s %-15s\n", 
+									customerList.get(i).getName(),
+									customerList.get(i).getRole(), 
+									customerList.get(i).getEmail(),
+									customerList.get(i).getStatus());
+			
 		}
-		System.out.println(output);
+		return output;
 	}
 	
-	public static void addCustomer(ArrayList<Customer> customerList) {
+	public static void viewAllCustomer(ArrayList<Customer> customerList) {
+		Helper.line(80, "-");
+		String output = String.format("%-25s %-15s %-35s %-15s\n", 
+								"NAME", "ROLE", "EMAIL", "STATUS");
+		output += retrieveAllCustomer(customerList);
+		System.out.println(output);
+	}
+	public static Customer inputCustomer() {
 		String name = Helper.readString("Enter full name: ");
-		for (int i = 0; i < customerList.size(); i++) {
-			if (name.equalsIgnoreCase(customerList.get(i).getName())) {
-				System.out.println("Error! Duplicated name entry!");
+		String role = Helper.readString("Enter role: ");
+		String email = Helper.readString("Enter email: ");
+		String password = Helper.readString("Enter password: ");
+		String status = Helper.readString("Enter status: ");
+
+		Customer c= new Customer(name, role, email, password, status);
+		return c;
+	}
+	
+	public static void addCustomer(ArrayList<Customer> customerList, Customer c) {
+		int size = customerList.size();
+		
+		for (int i = 0; i < size; i++) {
+			if(customerList.get(i).getName().equalsIgnoreCase(c.getName())) {
+				System.out.println("Error! Duplicate Name!");
 				break;
 			} else {
-				String role = Helper.readString("Enter role: ");
-				String email = Helper.readString("Enter email: ");
-				String password = Helper.readString("Enter password: ");
-				String status = Helper.readString("Enter status: ");
-				Customer c = new Customer(name, role, email, password, status);
 				customerList.add(c);
 				System.out.println("Customer added Successfully!");
 				break;
 			}
 		}
-	}
+	}	
+	
 	
 	public static void deleteCustomer(ArrayList<Customer> customerList) {
 		String name = Helper.readString("Enter name: ");
@@ -286,6 +308,7 @@ public class C206_CaseStudy {
 			}
 		}
 	}
+	
 	// =================================Manage Quotation Methods=================================
 	
 
