@@ -77,41 +77,18 @@ public class C206_CaseStudyTest {
 		//Test that after adding a request, the item added is same as the item added in the array list.
 		assertSame("Check that the QuotationRequest qr1 is added: ", qr2, QuotationRequestList.get(1));
 		
-<<<<<<< HEAD
+
 		//Test that the array list is not null so that new request can be added to it.
 		assertNotNull("Check that there is a valid arrayList to add to: ", QuotationRequestList);
-=======
+
 	}
 	
 
-	@Test
-	public void doViewQuotationRequest() {
->>>>>>> branch 'master' of https://github.com/20033173-Teo-XinNi/C206_CaseStudy
-		
-	}
-	
-	@Test
-<<<<<<< HEAD
-	
-	
-	
-	@After
-	public void tearDown() throws Exception {
-		c1 = null;
-		c2 = null;
-		customerList = null;
-=======
 	public void doDeleteQuotationRequest() {
 		
 		//Test that the array list is not null but empty.
 		assertNotNull("Check that there is a valid arrayList to delete from: ", QuotationRequestList);
->>>>>>> branch 'master' of https://github.com/20033173-Teo-XinNi/C206_CaseStudy
-		
-<<<<<<< HEAD
-		q1 = null;
-		q2 = null;
-		quotationList = null;
-=======
+
 		//Given after adding two items
 		C206_CaseStudy.addQuotationRequest(QuotationRequestList, qr1);
 		C206_CaseStudy.addQuotationRequest(QuotationRequestList, qr2);
@@ -133,14 +110,10 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addQuotationRequest(QuotationRequestList, qr1);
 		isDeleted = C206_CaseStudy.deleteQuotationRequest(QuotationRequestList, "7") ;
 		assertFalse("Check that when request name is deleted - false ", isDeleted);
->>>>>>> branch 'master' of https://github.com/20033173-Teo-XinNi/C206_CaseStudy
+
 		
 	}
 	
-<<<<<<< HEAD
-=======
-	
->>>>>>> branch 'master' of https://github.com/20033173-Teo-XinNi/C206_CaseStudy
 	public void RetrieveAllQuotationTest() {
 		//fail("Not yet implemented");
 		// Test if quotation list is not null but empty - boundary
@@ -197,7 +170,7 @@ public class C206_CaseStudyTest {
 	public void retrieveAllPackageTest() {
 		assertNotNull(packageList);
 		
-		String allPackage = C206_CaseStudy.retrieveAllPackage(packageList));
+		String allPackage = C206_CaseStudy.retrieveAllPackage(packageList);
 		String outputTest = "";
 		assertEquals(outputTest, allPackage);
 		
@@ -230,8 +203,6 @@ public class C206_CaseStudyTest {
 	
 	
 
-<<<<<<< HEAD
-=======
 
 	public void tearDown() throws Exception {
 		c1 = null;
@@ -248,5 +219,5 @@ public class C206_CaseStudyTest {
 	}
 
 	
->>>>>>> branch 'master' of https://github.com/20033173-Teo-XinNi/C206_CaseStudy
+
 }
