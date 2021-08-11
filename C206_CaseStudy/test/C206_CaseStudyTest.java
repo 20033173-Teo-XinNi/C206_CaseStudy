@@ -129,7 +129,7 @@ public class C206_CaseStudyTest {
 	
 
 	@Test
-<<<<<<< HEAD
+
 	public void doViewQuotationRequest() {
 		
 		//Test that the array list is not null but empty.
@@ -166,24 +166,8 @@ public class C206_CaseStudyTest {
 	}
 	
 	
-	
-	@After
-	public void tearDown() throws Exception {
-		c1 = null;
-		c2 = null;
-		customerList = null;
-		
-		q1 = null;
-		q2 = null;
-		quotationList = null;
-		
-		qr1 = null;
-		qr2 = null;
-		QuotationRequestList = null;
-	}
-	
-=======
->>>>>>> branch 'master' of https://github.com/20033173-Teo-XinNi/C206_CaseStudy.git
+
+
 	public void RetrieveAllQuotationTest() {
 		//fail("Not yet implemented");
 		// Test if quotation list is not null but empty - boundary
@@ -245,15 +229,20 @@ public class C206_CaseStudyTest {
 	
 	
 
+
 	@After
 	public void tearDown() throws Exception {
-		
 		c1 = null;
 		c2 = null;
 		customerList = null;
+		
 		q1 = null;
 		q2 = null;
 		quotationList = null;
+		
+		qr1 = null;
+		qr2 = null;
+		QuotationRequestList = null;
 	}
 	
 }
