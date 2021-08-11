@@ -9,19 +9,19 @@ import org.junit.Test;
 public class C206_CaseStudyTest {
 	private Customer c1;
 	private Customer c2;
-<<<<<<< HEAD
-=======
 	
 	private Quotation q1;
 	private Quotation q2;
 	
->>>>>>> branch 'master' of https://github.com/20033173-Teo-XinNi/C206_CaseStudy.git
-	private ArrayList<Customer> customerList;
-	private ArrayList<Quotation> quotationList;
-	
 	private QuotationRequest qr1;
 	private QuotationRequest qr2;
+	
+	private ArrayList<Customer> customerList;
+	private ArrayList<Quotation> quotationList;
 	private ArrayList<QuotationRequest> QuotationRequestList; 
+	
+	
+	
 	
 	public C206_CaseStudyTest() {
 		super();
@@ -34,19 +34,18 @@ public class C206_CaseStudyTest {
 		c2= new Customer("John Lim", "Customer", "Johnlim@def456.com", "NIL", "New");
 		customerList = new ArrayList<Customer>();
 		
-<<<<<<< HEAD
 		//Quotation Request test data
 		qr1 = new QuotationRequest("1", "98766789", "XN123@yeahoomail.com", "HDB", "Kitchen",
 				0, 0, "70 sq m", "Modern", "11-12-2021", 10000, 'N');
 		qr2 = new QuotationRequest("2", "98766789", "XN123@yeahoomail.com", "HDB", "Toilet", 
 				0, 2, "70 sq m", "Modern", "11-12-2021", 8000, 'N' );
 		QuotationRequestList = new ArrayList<QuotationRequest>();
-=======
+
 		q1 = new Quotation("1", "1", "Kitchen", "Includes cabinet", "Bryan", "1/11/2021", "10");
 		q2 = new Quotation("2", "2", "Living Room", "Includes flooring", "John", "1/12/2021", "5");
 		
 		quotationList = new ArrayList<Quotation>();
->>>>>>> branch 'master' of https://github.com/20033173-Teo-XinNi/C206_CaseStudy.git
+
 	}
 
 	
@@ -76,6 +75,10 @@ public class C206_CaseStudyTest {
 		assertNotNull("Check that there is a valid arrayList to add to: ", QuotationRequestList);
 		
 	}
+	
+	@Test
+	
+	
 	
 	@After
 	public void tearDown() throws Exception {
