@@ -268,6 +268,7 @@ public class C206_CaseStudy {
 		output += retrieveAllCustomer(customerList);
 		System.out.println(output);
 	}
+	
 	public static Customer inputCustomer() {
 		String name = Helper.readString("Enter full name: ");
 		String role = Helper.readString("Enter role: ");
@@ -275,26 +276,35 @@ public class C206_CaseStudy {
 		String password = Helper.readString("Enter password: ");
 		String status = Helper.readString("Enter status: ");
 
-		Customer c= new Customer(name, role, email, password, status);
+		Customer c = new Customer(name, role, email, password, status);
 		return c;
+		
 	}
 	
-	public static void addCustomer(ArrayList<Customer> customerList, Customer c) {
+	public static void addCustomer(ArrayList<Customer> customerList, Customer c1) {
 		int size = customerList.size();
-		
+		boolean duplicate = false;
+		String name = c1.getName();
 		for (int i = 0; i < size; i++) {
-			if(customerList.get(i).getName().equalsIgnoreCase(c.getName())) {
-				System.out.println("Error! Duplicate Name!");
+			String duplicateName = customerList.get(i).getName();
+			if(duplicateName.equalsIgnoreCase(name)) {
+				duplicate = true;
 				break;
 			} else {
-				customerList.add(c);
-				System.out.println("Customer added Successfully!");
-				break;
+				duplicate = false;
 			}
 		}
-	}	
-	
-	
+		if (duplicate == true) {
+			System.out.println("Error! Duplicate Name!");
+		} else {
+				customerList.add(c1);
+				System.out.println("Customer added");
+			
+			}
+		}
+
+
+
 	public static void deleteCustomer(ArrayList<Customer> customerList) {
 		String name = Helper.readString("Enter name: ");
 		for (int i = 0; i < customerList.size(); i++) {
