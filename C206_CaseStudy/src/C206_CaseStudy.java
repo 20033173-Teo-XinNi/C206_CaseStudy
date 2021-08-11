@@ -526,7 +526,7 @@ public class C206_CaseStudy {
 			if (deleteCustomerName.equalsIgnoreCase(name2)) {
 				customerList.remove(i).getName();
 			
-				System.out.println("Customer " + deleteCustomerName + " deleted successfully!");
+				System.out.println("Userr " + deleteCustomerName + " deleted successfully!");
 				break;
 			} else {
 				System.out.println("Invalid Customer name!");

@@ -57,7 +57,7 @@ public class C206_CaseStudyTest {
 		//test if the list of camcorders retrieved from the SourceCentre is empty - boundary
 		String allCustomer= C206_CaseStudy.retrieveAllCustomer(customerList);
 		String testOutput = "";
-		assertEquals("Check that viewAllCustomerlist", testOutput, allCustomer);
+		assertEquals("Check that viewAllCustomerList", testOutput, allCustomer);
 				
 		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
 		C206_CaseStudy.addCustomer(customerList, c1);
@@ -68,7 +68,7 @@ public class C206_CaseStudyTest {
 		allCustomer= C206_CaseStudy.retrieveAllCustomer(customerList);
 		testOutput = String.format("%-15s %-15s %-35s %-10s %-15s\n","Mary Tan", "Customer", "Marytan@abc123.com", "-", "New");
 		testOutput += String.format("%-15s %-15s %-35s %-10s %-15s\n","John Lim", "Customer", "Johnlim@def456.com", "-", "New");
-		assertEquals("Test that viewAllCustomerlist", testOutput, allCustomer);
+		assertEquals("Test that viewAllCustomerList", testOutput, allCustomer);
 				
 	}
 	
