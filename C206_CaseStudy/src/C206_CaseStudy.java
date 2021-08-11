@@ -10,8 +10,8 @@ public class C206_CaseStudy {
 		ArrayList<Customer> customerList = new ArrayList<Customer>();
 		ArrayList<QuotationRequest> QuotationRequestList = new ArrayList<QuotationRequest>();
 		
-		quotationList.add(new Quotation("1", "1", "Kitchen", "Includes cabinet", "Bryan", "1/11/2021", "10"));
-		quotationList.add(new Quotation("2", "2", "Living Room", "Includes flooring", "John", "1/12/2021", "5"));
+		quotationList.add(new Quotation("Q01", "1", "Kitchen", "Includes cabinet", "Bryan", "1/11/2021", "10"));
+		quotationList.add(new Quotation("Q02", "2", "Living Room", "Includes flooring", "John", "1/12/2021", "5"));
 		
 		customerList.add(new Customer("Mary Tan", "Customer", "Marytan@abc123.com", "NIL", "New"));
 		customerList.add(new Customer("John Lim", "Customer", "Johnlim@def456.com", "NIL", "New"));
@@ -323,18 +323,26 @@ public class C206_CaseStudy {
 
 	public static String retrieveAllQuotations(ArrayList<Quotation> quotationList) {
 		String output = "";
-		for (int i = 0; i < quotationList.size(); i++) {
-			output += String.format("%-15s %-15s %-25s %-30s %-15s %-25s %-15s\n", quotationList.get(i).getRequestID(),
-					quotationList.get(i).getQuotationID(), quotationList.get(i).getRenoCategory(),
-					quotationList.get(i).getDescription(), quotationList.get(i).getDesignerName(),
-					quotationList.get(i).getDate(), quotationList.get(i).getAmount());
+		int size = quotationList.size();
+		for (int i = 0; i < size; i++) {
+			String quotationID = quotationList.get(i).getQuotationID();
+			String requestID = quotationList.get(i).getRequestID();
+			String renoCategory = quotationList.get(i).getRenoCategory();
+			String description = quotationList.get(i).getDescription();
+			String designerName = quotationList.get(i).getDesignerName();
+			String date = quotationList.get(i).getDate();
+			String amount = quotationList.get(i).getAmount();
+			output += String.format("%-15s %-15s %-25s %-30s %-15s %-25s %-15s\n", quotationID,
+					requestID, renoCategory,
+					description, designerName,
+					date, amount);
 		}
 		return output;
 	}
 	
 	public static void viewAllQuotations(ArrayList<Quotation> quotationList) {
 		C206_CaseStudy.setHeader("QUOTATIONS LIST");
-		String output = String.format("%-15s %-15s %-25s %-30s %-15s %-25s %-15s\n", "REQUEST_ID", "QUOTATION_ID",
+		String output = String.format("%-15s %-15s %-25s %-30s %-15s %-25s %-15s\n", "QUOTATION_ID", "REQUEST_ID",
 				"RENOVATION Category", "DESCRIPTION", "DESIGNER NAME", "EARLIST START DATE", "TOTAL QUOTATION AMOUNT");
 
 		output += retrieveAllQuotations(quotationList);
@@ -343,39 +351,48 @@ public class C206_CaseStudy {
 	}
 	
 	public static Quotation inputQuotation(ArrayList<Quotation> quotationList) {
-		String requestID = Helper.readString("Enter Request ID: ");
 		String quotationID = Helper.readString("Enter Quotation ID: ");
+		String requestID = Helper.readString("Enter Request ID: ");
 		String renoCategory = Helper.readString("Enter Renovation Category: ");
 		String description = Helper.readString("Enter Description: ");
 		String name = Helper.readString("Enter Designer name: ");
 		String date = Helper.readString("Enter Earliest Start Date: ");
 		String amount = Helper.readString("Enter Total Quotation Amount: ");
-		Quotation q = new Quotation(requestID, quotationID, renoCategory, description, name, date, amount);
+		Quotation q = new Quotation(quotationID, requestID,renoCategory, description, name, date, amount);
 		return q;
 			}
 		
 	
 
 	public static void addQuotation(ArrayList<Quotation> quotationList, Quotation q) {
-
-		for (int i = 0; i < quotationList.size(); i++) {
-			if(quotationList.get(i).getQuotationID().equalsIgnoreCase(q.getQuotationID())) {
-				System.out.println("Error! Duplicate Quotation ID!");
+		boolean duplicate = false;
+		int size = quotationList.size();
+		for (int i = 0; i < size; i++) {
+			String quotationID = q.getQuotationID();
+			String quotationID2 = quotationList.get(i).getQuotationID();
+			if(quotationID2.equalsIgnoreCase(quotationID)) {
+				duplicate = true;
 				break;
 			}else {
-				quotationList.add(q);
-				System.out.println("Quotation added sucessfully!");
-				break;
+				duplicate = false;
 			}
 		}
-
+		
+		if (duplicate == true) {
+			System.out.println("Error! Duplicate Quotation ID!");
+		}else {
+			System.out.println("Quotation added sucessfully");
+			quotationList.add(q);
+		}
 	}
 
 
 	public static void deleteQuotation(ArrayList<Quotation> quotationList) {
 		String quotationID = Helper.readString("Enter Quotation ID: ");
-		for (int i = 0; i < quotationList.size(); i++) {
-			if (quotationID.equalsIgnoreCase(quotationList.get(i).getQuotationID())) {
+		int size = quotationList.size();
+		for (int i = 0; i < size; i++) {
+			String quotationID2 = quotationList.get(i).getQuotationID();
+			if (quotationID.equalsIgnoreCase(quotationID2)) {
 				quotationList.remove(i).getRequestID();
 			
 				System.out.println("Quotation with ID: " + quotationID + " deleted successfully!");

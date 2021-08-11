@@ -9,18 +9,20 @@ import org.junit.Test;
 public class C206_CaseStudyTest {
 	private Customer c1;
 	private Customer c2;
-	private ArrayList<Customer> customerList;
-	
+
 	private Quotation q1;
 	private Quotation q2;
 	
 
-
-	private ArrayList<Quotation> quotationList;
-	
 	private QuotationRequest qr1;
 	private QuotationRequest qr2;
+	
+	private ArrayList<Customer> customerList;
+	private ArrayList<Quotation> quotationList;
 	private ArrayList<QuotationRequest> QuotationRequestList; 
+	
+	
+	
 	
 	public C206_CaseStudyTest() {
 		super();
@@ -32,7 +34,6 @@ public class C206_CaseStudyTest {
 		c1= new Customer("Mary Tan", "Customer", "Marytan@abc123.com", "NIL", "New");
 		c2= new Customer("John Lim", "Customer", "Johnlim@def456.com", "NIL", "New");
 		customerList = new ArrayList<Customer>();
-		
 
 		//Quotation Request test data
 		qr1 = new QuotationRequest("1", "98766789", "XN123@yeahoomail.com", "HDB", "Kitchen",
@@ -117,8 +118,8 @@ public class C206_CaseStudyTest {
 		
 	}
 	
-	
-	
+
+	@Test
 	public void RetrieveAllQuotationTest() {
 		//fail("Not yet implemented");
 		// Test if quotation list is not null but empty - boundary
@@ -142,7 +143,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Test that ViewAllChromebooklist", testOutput, allQuotation);
 	}
 	
-	
+	@Test
 	public void addQuotation() {
 		// Item list is not null, so that can add a new item - boundary
 		assertNotNull("Check if there is valid Quotation arraylist to add to", quotationList);
