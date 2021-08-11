@@ -112,7 +112,8 @@ public class C206_CaseStudy {
 								addQuotation(quotationList,q);
 							} else if (option3 == 3) {
 								// method for delete a quotation
-								deleteQuotation(quotationList);
+								String deleteInput = inputDeleteQuotation(quotationList);
+								deleteQuotation(quotationList,deleteInput);
 							} else if (option3 == 4) {
 
 							} else {
@@ -381,29 +382,30 @@ public class C206_CaseStudy {
 		if (duplicate == true) {
 			System.out.println("Error! Duplicate Quotation ID!");
 		}else {
-			System.out.println("Quotation added sucessfully");
+			System.out.println("Quotation added sucessfully!");
 			quotationList.add(q);
 		}
 	}
+	
+	public static String inputDeleteQuotation(ArrayList<Quotation> quotationList) {
+		String deleteQuotationID = Helper.readString("Enter Quotation ID: ");
+		return deleteQuotationID;
+			}
 
-
-	public static void deleteQuotation(ArrayList<Quotation> quotationList) {
-		String quotationID = Helper.readString("Enter Quotation ID: ");
+	public static void deleteQuotation(ArrayList<Quotation> quotationList, String deleteQuotationID) {
 		int size = quotationList.size();
 		for (int i = 0; i < size; i++) {
 			String quotationID2 = quotationList.get(i).getQuotationID();
-			if (quotationID.equalsIgnoreCase(quotationID2)) {
+			if (deleteQuotationID.equalsIgnoreCase(quotationID2)) {
 				quotationList.remove(i).getRequestID();
 			
-				System.out.println("Quotation with ID: " + quotationID + " deleted successfully!");
+				System.out.println("Quotation with ID: " + deleteQuotationID + " deleted successfully!");
 				break;
 			} else {
 				System.out.println("Invalid Quotation ID!");
+				break;
 			}
 		}
-		
-
-		
 		
 	}
 

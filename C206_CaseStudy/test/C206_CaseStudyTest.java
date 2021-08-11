@@ -125,12 +125,12 @@ public class C206_CaseStudyTest {
 		// Test if quotation list is not null but empty - boundary
 		assertNotNull("Test if there is valid Quotation arraylist to retrieve item from", quotationList);
 		
-		//test if the list of quotation retrieved from C206_CaseStudy is empty - boundary
+		//test if the list of quotations retrieved from C206_CaseStudy is empty - boundary
 		String allQuotation= C206_CaseStudy.retrieveAllQuotations(quotationList);
 		String testOutput = "";
 		assertEquals("Test that the retrieved Chromebooklist is empty?", testOutput, allQuotation);
 		
-		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
+		//Given an empty list, after adding 2 Quotations, test if the size of the list is 2 - normal
 		C206_CaseStudy.addQuotation(quotationList, q1);
 		C206_CaseStudy.addQuotation(quotationList, q2);
 		assertEquals("Test that quotationList is 2 after adding 2 item", 2, quotationList.size());
@@ -144,20 +144,39 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
-	public void addQuotation() {
-		// Item list is not null, so that can add a new item - boundary
+	public void addQuotationTest() {
+		// Test that Quotation list is not null, so that can add a new quotation - boundary
 		assertNotNull("Check if there is valid Quotation arraylist to add to", quotationList);
-		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
-		//The item just added is as same as the first item of the list
+		//Given an empty list, after adding 1 Quotation, the size of the list is 1 - normal
+		//The Quotation just added is as same as the first Quotation of the list
 		C206_CaseStudy.addQuotation(quotationList, q1);
 		assertEquals("Check that Quotation arraylist size is 1", 1, quotationList.size());
 		assertSame("Check that Quotation is added", q1, quotationList.get(0));
 		
-		//Add another item. test The size of the list is 2? -normal
-		//The item just added is as same as the second item of the list
+		//Add another Quotation. test The size of the list is 2? -normal
+		//The Quotation just added is as same as the second Quotation of the list
 		C206_CaseStudy.addQuotation(quotationList, q2);
 		assertEquals("Check that Quotation arraylist size is 2", 2, quotationList.size());
 		assertSame("Check that Quotation is added", q2, quotationList.get(1));
+		
+	}
+	
+	@Test
+	public void deleteQuotationTest() {
+		// Test that Quotation list is not null, so that can delete - boundary
+		assertNotNull("Check if there is valid Quotation arraylist to delete from", quotationList);
+				
+		//Adding two Quotations to list
+		C206_CaseStudy.addQuotation(quotationList, q1);	
+		C206_CaseStudy.addQuotation(quotationList, q2);
+		//Given a list with two Quotation, after deleting 1 Quotation, the size of the list is 1
+		C206_CaseStudy.deleteQuotation(quotationList, quotationList.get(0).getQuotationID());
+		assertEquals("Check that Quotation arraylist size is 1", 1, quotationList.size());
+		
+		// Test if quotation list is not null but empty after deleting quotation - boundary
+		assertNotNull("Test that Quotation arraylist is not null but empty after deleting quotation", quotationList);
+				
+				
 	}
 	
 	
