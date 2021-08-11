@@ -50,7 +50,7 @@ public class C206_CaseStudyTest {
 	}
 
 	@Test
-	public void retrieveAllCustomerTest() {
+	public void RetrieveAllCustomerTest() {
 		// Test if Item list is not null but empty -boundary
 		assertNotNull("Test if there is valid Customer arraylist to retrieve customers", customerList);
 				
@@ -66,16 +66,15 @@ public class C206_CaseStudyTest {
 				
 		//test if the expected output string same as the list of camcorders retrieved from the SourceCentre	
 		allCustomer= C206_CaseStudy.retrieveAllCustomer(customerList);
-		testOutput = String.format("%-25s %-15s %-35s %-15s\n","Mary Tan", "Customer", "Marytan@abc123.com", "NIL", "New");
-		testOutput += String.format("%-25s %-15s %-35s %-15s\n","John Lim", "Customer", "Johnlim@def456.com", "NIL", "New" );
-			
+		testOutput = String.format("%-25s %-15s %-35s %-15s\n","Mary Tan", "Customer", "Marytan@abc123.com", "New", "New");
+		testOutput += String.format("%-25s %-15s %-35s %-15s\n","John Lim", "Customer", "Johnlim@def456.com", "New", "New" );
 		assertEquals("Test that viewAllCustomerlist", testOutput, allCustomer);
 				
 	}
-	
+			
 
 	@Test
-	public void addCustomerTest() {
+	public void AddCustomerTest() {
 		// Item list is not null, so that can add a new item
 		assertNotNull("Test if there is valid Customer arraylist to add to", customerList);
 				
@@ -93,8 +92,19 @@ public class C206_CaseStudyTest {
 		}
 	
 	@Test
-	public void deleteCustomerTest() {
-	
+	public void DeleteCustomerTest() {
+		// Test that Customer list is not null, so can delete
+		assertNotNull("Check if there is valid customer arraylist to delete from", customerList);
+						
+		//Given adding two customers to the list
+		C206_CaseStudy.addCustomer(customerList, c1);	
+		C206_CaseStudy.addCustomer(customerList, c2);
+		//After adding 2 customers, after deleting 1 customer, the size of the list is 1
+		C206_CaseStudy.deleteCustomer(customerList, customerList.get(0).getName());
+		assertEquals("Check that customer arraylist size is 1", 1, customerList.size());	
+		// Test if customer list is not null but empty after deleting customer
+		assertNotNull("Test that Quotation arraylist is not null but empty after deleting quotation", quotationList);
+						
 	}
 	
 	@Test

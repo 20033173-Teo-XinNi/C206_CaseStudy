@@ -86,8 +86,8 @@ public class C206_CaseStudy {
 							C206_CaseStudy.addCustomer(customerList, c);
 						} else if (option1 == 3) {
 							// method for delete a customer
-//							Customer c = inputCustomer();
-							C206_CaseStudy.deleteCustomer(customerList);
+							String deletionInput = inputCustomerDeletion(customerList);
+							C206_CaseStudy.deleteCustomer(customerList, deletionInput);
 						} else if (option1 == 4) {
 							
 						} else {
@@ -298,27 +298,28 @@ public class C206_CaseStudy {
 			System.out.println("Error! Duplicate Name!");
 		} else {
 				customerList.add(c1);
-				System.out.println("Customer added");
+				System.out.println("Customer added Successfully!");
 			
 			}
 		}
-
-
-
-	public static void deleteCustomer(ArrayList<Customer> customerList) {
-		String name = Helper.readString("Enter name: ");
+	public static String inputCustomerDeletion(ArrayList<Customer> customerList) {
+		String name = Helper.readString("Enter full name: ");
+		return name;
+	}
+	public static void deleteCustomer(ArrayList<Customer> customerList, String name) {
 		for (int i = 0; i < customerList.size(); i++) {
-			if (name.equalsIgnoreCase(customerList.get(i).getName())) {
+			String name2 = customerList.get(i).getName(); 
+			if (name.equalsIgnoreCase(name2)) {
 				customerList.remove(i).getName();
 				
 				System.out.println("User " + name + " deleted Successfully!");
 				break;
 			} else {
 				System.out.println("Invalid Name entered!");
+				break;
 			}
 		}
 	}
-	
 	// =================================Manage Quotation Methods=================================
 	
 
