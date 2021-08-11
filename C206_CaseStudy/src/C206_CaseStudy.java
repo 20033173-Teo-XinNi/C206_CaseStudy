@@ -338,7 +338,7 @@ public class C206_CaseStudy {
 		System.out.println(output);
 	}
 	
-	static String retrieveAllPackage(ArrayList<Package> packageList) {
+	public static String retrieveAllPackage(ArrayList<Package> packageList) {
 		// TODO Auto-generated method stub
 		String output = "";
 		
