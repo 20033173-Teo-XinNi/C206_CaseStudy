@@ -152,6 +152,25 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addQuotation(quotationList, q2);
 		assertEquals("Check that Quotation arraylist size is 2", 2, quotationList.size());
 		assertSame("Check that Quotation is added", q2, quotationList.get(1));
+
+	}
+	
+	@Test
+	public void deleteQuotationTest() {
+		// Test that Quotation list is not null, so that can delete - boundary
+		assertNotNull("Check if there is valid Quotation arraylist to delete from", quotationList);
+				
+		//Adding two Quotations to list
+		C206_CaseStudy.addQuotation(quotationList, q1);	
+		C206_CaseStudy.addQuotation(quotationList, q2);
+		//Given a list with two Quotation, after deleting 1 Quotation, the size of the list is 1
+		C206_CaseStudy.deleteQuotation(quotationList, quotationList.get(0).getQuotationID());
+		assertEquals("Check that Quotation arraylist size is 1", 1, quotationList.size());
+		
+		// Test if quotation list is not null but empty after deleting quotation - boundary
+		assertNotNull("Test that Quotation arraylist is not null but empty after deleting quotation", quotationList);
+				
+				
 	}
 	
 	@Test
