@@ -86,8 +86,8 @@ public class C206_CaseStudy {
 							C206_CaseStudy.addCustomer(customerList, c);
 						} else if (option1 == 3) {
 							// method for delete a customer
-							String deletionInput = inputCustomerDeletion(customerList);
-							C206_CaseStudy.deleteCustomer(customerList, deletionInput);
+							Customer c = inputCustomerDeletion();
+							C206_CaseStudy.deleteCustomer(customerList, c);
 						} else if (option1 == 4) {
 							
 						} else {
@@ -302,23 +302,35 @@ public class C206_CaseStudy {
 			
 			}
 		}
-	public static String inputCustomerDeletion(ArrayList<Customer> customerList) {
+	public static Customer inputCustomerDeletion() {
 		String name = Helper.readString("Enter full name: ");
-		return name;
+		String role = Helper.readString("Enter role: ");
+		String email = Helper.readString("Enter email: ");
+		String password = Helper.readString("Enter password: ");
+		String status = Helper.readString("Enter status: ");
+		Customer c = new Customer(name, role, email, password, status);
+		return c;
 	}
-	public static void deleteCustomer(ArrayList<Customer> customerList, String name) {
+	public static void deleteCustomer(ArrayList<Customer> customerList, Customer c1) {
+		int size = customerList.size();
+		boolean error = false;
+		String name = c1.getName();
 		for (int i = 0; i < customerList.size(); i++) {
 			String name2 = customerList.get(i).getName(); 
-			if (name.equalsIgnoreCase(name2)) {
-				customerList.remove(i).getName();
-				
-				System.out.println("User " + name + " deleted Successfully!");
+			if (name2.equalsIgnoreCase(name)) {
+				error = false;
 				break;
 			} else {
-				System.out.println("Invalid Name entered!");
-				break;
+				error = true;
 			}
 		}
+		if (error == true) {
+			System.out.println("Invalid Name entered!");
+		} else {
+				customerList.remove(c1);
+				System.out.println("User " + name + " deleted Successfully!");
+
+			}
 	}
 	// =================================Manage Quotation Methods=================================
 	
@@ -404,7 +416,7 @@ public class C206_CaseStudy {
 				break;
 			} else {
 				System.out.println("Invalid Quotation ID!");
-				break;
+				
 			}
 		}
 		

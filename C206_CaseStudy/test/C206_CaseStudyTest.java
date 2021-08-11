@@ -66,8 +66,8 @@ public class C206_CaseStudyTest {
 				
 		//test if the expected output string same as the list of camcorders retrieved from the SourceCentre	
 		allCustomer= C206_CaseStudy.retrieveAllCustomer(customerList);
-		testOutput = String.format("%-25s %-15s %-35s %-15s\n","Mary Tan", "Customer", "Marytan@abc123.com", "New", "New");
-		testOutput += String.format("%-25s %-15s %-35s %-15s\n","John Lim", "Customer", "Johnlim@def456.com", "New", "New" );
+		testOutput = String.format("%-25s %-15s %-35s %-15s\n","Mary Tan", "Customer", "Marytan@abc123.com", "New");
+		testOutput += String.format("%-25s %-15s %-35s %-15s\n","John Lim", "Customer", "Johnlim@def456.com", "New" );
 		assertEquals("Test that viewAllCustomerlist", testOutput, allCustomer);
 				
 	}
@@ -100,10 +100,10 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addCustomer(customerList, c1);	
 		C206_CaseStudy.addCustomer(customerList, c2);
 		//After adding 2 customers, after deleting 1 customer, the size of the list is 1
-		C206_CaseStudy.deleteCustomer(customerList, customerList.get(0).getName());
+		C206_CaseStudy.deleteCustomer(customerList, c1);
 		assertEquals("Check that customer arraylist size is 1", 1, customerList.size());	
 		// Test if customer list is not null but empty after deleting customer
-		assertNotNull("Test that Quotation arraylist is not null but empty after deleting quotation", quotationList);
+		assertNotNull("Test that customer arraylist is not null but empty after deleting customer", customerList);
 						
 	}
 	
