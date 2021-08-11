@@ -247,9 +247,7 @@ public class C206_CaseStudy {
 	// =================================Manage Customer Methods==================================
 	public static String retrieveAllCustomer(ArrayList<Customer> customerList) {
 		String output = "";
-
-		int size = customerList.size();
-		for (int i = 0; i < size; i++) {
+		for (int i = 0; i < customerList.size(); i++) {
 
 			output += String.format("%-25s %-15s %-35s %-15s\n", 
 									customerList.get(i).getName(),
@@ -268,6 +266,7 @@ public class C206_CaseStudy {
 		output += retrieveAllCustomer(customerList);
 		System.out.println(output);
 	}
+	
 	
 	public static Customer inputCustomer() {
 		String name = Helper.readString("Enter full name: ");

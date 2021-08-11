@@ -72,7 +72,7 @@ public class C206_CaseStudyTest {
 				
 	}
 	
-	
+
 	@Test
 	public void addCustomerTest() {
 		// Item list is not null, so that can add a new item
